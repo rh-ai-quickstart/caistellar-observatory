@@ -58,6 +58,14 @@ backend:
     type: ClusterIP
     port: 8080
 
+  route:
+    enabled: true
+    host: ""  # Leave empty for auto-generated
+    tls:
+      enabled: true
+      termination: edge
+      insecureEdgeTerminationPolicy: Redirect
+
 # Frontend configuration
 frontend:
   replicaCount: 1
