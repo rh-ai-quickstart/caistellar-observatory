@@ -1,0 +1,27 @@
+{{- if .Values.backend.route.enabled }}
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: {{ include "caistellar.fullname" . }}-backend
+  labels:
+    {{- include "caistellar.labels" . | nindent 4 }}
+    app.kubernetes.io/component: backend
+  annotations:
+    haproxy.router.openshift.io/timeout: 5m
+spec:
+  {{- if .Values.backend.route.host }}
+  host: {{ .Values.backend.route.host }}
+  {{- end }}
+  to:
+    kind: Service
+    name: {{ include "caistellar.fullname" . }}-backend
+    weight: 100
+  port:
+    targetPort: http
+  {{- if .Values.backend.route.tls.enabled }}
+  tls:
+    termination: {{ .Values.backend.route.tls.termination }}
+    insecureEdgeTerminationPolicy: {{ .Values.backend.route.tls.insecureEdgeTerminationPolicy | default "Redirect" }}
+  {{- end }}
+  wildcardPolicy: None
+{{- end }}

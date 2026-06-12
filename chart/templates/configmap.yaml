@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "caistellar.fullname" . }}-config
+  labels:
+    {{- include "caistellar.labels" . | nindent 4 }}
+data:
+  model-endpoint: {{ include "caistellar.modelEndpoint" . | quote }}
