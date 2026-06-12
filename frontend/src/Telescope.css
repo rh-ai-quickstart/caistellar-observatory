@@ -1,0 +1,315 @@
+/* Telescope Page Styles */
+.telescope-page {
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  background: #000000;
+}
+
+/* Starfield background with twinkle */
+.telescope-page::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    radial-gradient(2px 2px at 20% 30%, white, transparent),
+    radial-gradient(1px 1px at 60% 70%, white, transparent),
+    radial-gradient(2px 2px at 50% 50%, white, transparent),
+    radial-gradient(1px 1px at 80% 10%, white, transparent),
+    radial-gradient(2px 2px at 90% 60%, white, transparent),
+    radial-gradient(1px 1px at 33% 80%, white, transparent),
+    radial-gradient(1px 1px at 15% 15%, white, transparent),
+    radial-gradient(2px 2px at 45% 20%, white, transparent),
+    radial-gradient(1px 1px at 25% 55%, white, transparent),
+    radial-gradient(2px 2px at 70% 85%, white, transparent),
+    radial-gradient(1px 1px at 85% 40%, white, transparent),
+    radial-gradient(2px 2px at 40% 90%, white, transparent),
+    radial-gradient(1px 1px at 10% 60%, white, transparent),
+    radial-gradient(2px 2px at 75% 25%, white, transparent),
+    radial-gradient(1px 1px at 35% 45%, white, transparent),
+    radial-gradient(1px 1px at 95% 80%, white, transparent),
+    radial-gradient(2px 2px at 55% 15%, white, transparent),
+    radial-gradient(1px 1px at 65% 95%, white, transparent),
+    radial-gradient(1px 1px at 5% 35%, white, transparent),
+    radial-gradient(2px 2px at 48% 68%, white, transparent),
+    radial-gradient(1px 1px at 88% 28%, white, transparent),
+    radial-gradient(1px 1px at 18% 88%, white, transparent),
+    radial-gradient(2px 2px at 72% 52%, white, transparent),
+    radial-gradient(1px 1px at 42% 12%, white, transparent);
+  background-size: 100% 100%;
+  opacity: 0.8;
+  z-index: 1;
+  pointer-events: none;
+  animation: twinkle 4s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.6; }
+  25% { opacity: 0.8; }
+  50% { opacity: 0.4; }
+  75% { opacity: 0.7; }
+}
+
+.telescope-page .app-container.telescope-active {
+  grid-template-columns: 1fr;
+}
+
+.telescope-page .app-container.telescope-active .left-sidebar,
+.telescope-page .app-container.telescope-active .right-sidebar {
+  display: none;
+}
+
+/* Telescope Header (shown when active) */
+.telescope-header {
+  display: none;
+  grid-column: 1 / -1;
+  padding: 30px 50px;
+  text-align: center;
+}
+
+.telescope-header.active {
+  display: block;
+}
+
+.telescope-header .main-title {
+  font-size: 1.5rem;
+  margin-bottom: 5px;
+}
+
+.telescope-header .subtitle {
+  font-size: 0.75rem;
+  margin-top: 5px;
+}
+
+/* Activate screen */
+.activate-telescope {
+  text-align: center;
+}
+
+.activate-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.activate-subtitle {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 30px;
+}
+
+.activate-btn {
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  color: white;
+  padding: 15px 40px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: 1px;
+  transition: all 0.3s;
+  font-family: 'Inter', sans-serif;
+}
+
+.activate-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.8);
+}
+
+/* Hemisphere choice */
+.hemisphere-choice {
+  text-align: center;
+  display: none;
+}
+
+.hemisphere-choice.active {
+  display: block;
+}
+
+.choice-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.choice-subtitle {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 40px;
+}
+
+.hemisphere-choice-btns {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.hemisphere-choice-btn {
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  color: white;
+  padding: 15px 40px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: 1px;
+  transition: all 0.3s;
+  font-family: 'Inter', sans-serif;
+}
+
+.hemisphere-choice-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.8);
+}
+
+/* Telescope container */
+.telescope-container {
+  width: 100%;
+  height: 100%;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+  display: none;
+}
+
+.telescope-container.active {
+  display: block;
+}
+
+#aladin-lite-div {
+  width: 100%;
+  height: 100%;
+}
+
+/* Override Aladin grid color */
+#aladin-lite-div canvas {
+  /* This will affect the main canvas but grid is drawn on it */
+}
+
+/* Try to override grid styling if Aladin uses SVG or specific classes */
+.telescope-page .aladin-grid-container,
+.telescope-page .aladin-reticleCanvas,
+.telescope-page #aladin-lite-div svg line,
+.telescope-page #aladin-lite-div svg path,
+.telescope-page #aladin-lite-div svg text {
+  stroke: rgba(100, 100, 100, 0.5) !important;
+  fill: rgba(150, 150, 150, 0.7) !important;
+}
+
+/* Navigation link button */
+.nav-link-btn {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+  transition: color 0.3s;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  padding: 0;
+}
+
+.nav-link-btn:hover {
+  color: rgba(255, 255, 255, 1);
+}
+
+/* Scroll up indicator */
+.scroll-up {
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%) rotate(0deg);
+  animation: bounceUp 2s infinite;
+}
+
+@keyframes bounceUp {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(-10px); }
+}
+
+/* Capture & Enhance button */
+.capture-enhance-btn {
+  background: rgba(255, 150, 120, 0.2);
+  border: 2px solid rgba(255, 150, 120, 0.6);
+  color: white;
+  padding: 12px 30px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: 1px;
+  transition: all 0.3s;
+  font-family: 'Inter', sans-serif;
+  border-radius: 2px;
+}
+
+.capture-enhance-btn:hover {
+  background: rgba(255, 150, 120, 0.4);
+  border-color: rgba(255, 150, 120, 0.9);
+  box-shadow: 0 0 20px rgba(255, 150, 120, 0.5);
+}
+
+/* Help modal */
+.help-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.help-dialog {
+  background: rgba(20, 20, 30, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  padding: 40px;
+  max-width: 600px;
+  color: white;
+}
+
+.help-dialog h2 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.help-dialog p {
+  line-height: 1.8;
+  margin-bottom: 15px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.help-dialog strong {
+  color: white;
+  font-weight: 600;
+}
+
+.help-dialog button {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  padding: 12px 30px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  letter-spacing: 1px;
+  transition: all 0.3s;
+  border-radius: 2px;
+}
+
+.help-dialog button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.6);
+}
