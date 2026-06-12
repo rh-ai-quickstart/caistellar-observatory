@@ -47,7 +47,7 @@ CAIstellar Observatory brings AI image enhancement to celestial objects. This ap
        ▼
 ┌─────────────────────────────────────────────────────────────────┐
 │  Frontend (React)                                               │
-│  • Space-themed UI with nebula colors                          │
+│  • Space-themed UI                                              │
 │  • Drag-and-drop selection box (256x256 region)                │
 │  • Mouse wheel zoom for detail inspection                      │
 │  • Before/after comparison view                                │
@@ -109,10 +109,10 @@ Users upload telescope images, select a 256×256 region of interest, and the AI 
   - Model Server: 4 GiB request, 8 GiB limit
 - **GPU**: Not required (CPU-only inference supported, ~30-60 seconds per image)
 
-### Software
+### Prerequisites
 
-- **OpenShift**: 4.12 or later
-- **OpenShift AI Operator**: 2.5 or later (with KServe enabled)
+- **OpenShift**: 4.2x 
+- **OpenShift AI**: 3.x
 - **Helm**: 3.10 or later
 - **oc CLI**: 4.12 or later
 
