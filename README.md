@@ -56,7 +56,7 @@ CAIstellar Observatory brings AI image enhancement to celestial objects. This ap
        ▼
 ┌─────────────────────────────────────────────────────────────────┐
 │  Backend (FastAPI + Python)                                     │
-│  • Image preprocessing with OpenCV                             │
+│  • Image preprocessing with python                              │
 │  • Crop 256x256 region based on selection                      │
 │  • Convert to normalized tensor format                         │
 │  • Handle KServe v2 protocol communication                     │
